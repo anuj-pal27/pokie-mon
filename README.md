@@ -42,7 +42,7 @@ pokemon-explorer/ ├── public/ │ └── index.html ├── src/ │ 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/pokemon-explorer.git
+   git clone https://github.com/anuj-pal27/pokie-mon.git
    cd pokemon-explorer
 
 Install dependencies
