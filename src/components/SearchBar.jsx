@@ -1,11 +1,15 @@
-const SearchBar = ({ searchTerm, onSearchChange }) => (
+import React from "react";
+
+function SearchBar({ searchTerm, setSearchTerm }) {
+  return (
     <input
+      className="search-bar"
       type="text"
       placeholder="Search Pokémon..."
       value={searchTerm}
-      onChange={(e) => onSearchChange(e.target.value)}
-      className="search-bar"
+      onChange={(e) => setSearchTerm(e.target.value)}
     />
   );
-  export default SearchBar;
-  
+}
+
+export default SearchBar;

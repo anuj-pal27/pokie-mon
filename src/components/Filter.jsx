@@ -1,4 +1,4 @@
-const FilterDropdown = ({ types, selectedType, onTypeChange }) => (
+const Filter = ({ types, selectedType, onTypeChange }) => (
     <select value={selectedType} onChange={(e) => onTypeChange(e.target.value)} className="filter-dropdown">
       <option value="">All Types</option>
       {types.map((type) => (
@@ -8,5 +8,5 @@ const FilterDropdown = ({ types, selectedType, onTypeChange }) => (
       ))}
     </select>
   );
-  export default FilterDropdown;
+  export default Filter;
   

@@ -1,37 +1,93 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header.jsx';
-import Filter from './components/Filter.jsx';
-import PokemonList from './components/PokemonList.jsx';
-import SearchBar from './components/SearchBar.jsx';
-import { useState } from 'react';
-import useFetchPokemon from './hooks/useFetchPokemon.js';
+import React, { useEffect, useState } from "react";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import Filter from "./components/Filter";
+import PokemonCard from "./components/PokemonCard";
+import "./App.css";
 
 function App() {
-  const {pokemons,loading,error} = useFetchPokemon();
+  const [pokemonList, setPokemonList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const allTypes = [...new Set(pokemons.flatMap((p)=>p.types))];
+  useEffect(() => {
+    async function fetchPokemon() {
+      try {
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
+        const data = await res.json();
 
-  const filteredPokemons = pokemons.filter((pokemon) => {
-    const matchesSearchTerm = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = selectedType ? pokemon.types.includes(selectedType) : true;
-    return matchesSearchTerm && matchesType;
-  });
+        const pokemonDetails = await Promise.all(
+          data.results.map(async (pokemon) => {
+            const res = await fetch(pokemon.url);
+            return res.json();
+          })
+        );
+
+        setPokemonList(pokemonDetails);
+        setFilteredList(pokemonDetails);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch Pokémon.");
+        setLoading(false);
+      }
+    }
+
+    fetchPokemon();
+  }, []);
+
+  useEffect(() => {
+    let list = pokemonList;
+
+    if (searchTerm) {
+      list = list.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedType) {
+      list = list.filter((pokemon) =>
+        pokemon.types.some((typeInfo) => typeInfo.type.name === selectedType)
+      );
+    }
+
+    setFilteredList(list);
+  }, [searchTerm, selectedType, pokemonList]);
+
+  if (loading) return <div className="loading">Loading Pokémon...</div>;
+  if (error) return <div className="error">{error}</div>;
+  const allTypes = Array.from(
+    new Set(
+      pokemonList.flatMap((pokemon) =>
+        pokemon.types.map((typeInfo) => typeInfo.type.name)
+      )
+    )
+  );
   return (
-    <div className="App">
-      <Header/>
-      <div className='controls'>
-        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-        <Filter types={allTypes} selectedType={selectedType} onTypeChange={setSelectedType} />
+    <div className="app-container">
+      <Header />
+      <div className="controls">
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Filter
+  types={allTypes}
+  selectedType={selectedType}
+  onTypeChange={(value) => setSelectedType(value)}
+/>
+
       </div>
 
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {!loading && !error && (
-        <PokemonList pokemons={filteredPokemons} />
-      )}
+      <div className="pokemon-grid">
+        {filteredList.length > 0 ? (
+          filteredList.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ))
+        ) : (
+          <div className="no-results">No Pokémon found!</div>
+        )}
+      </div>
     </div>
   );
 }
