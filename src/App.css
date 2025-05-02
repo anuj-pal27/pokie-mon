@@ -20,12 +20,6 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.header-icon {
-  font-size: 2rem;
-  margin-right: 10px;
-  color: #ff5722;
-}
-
 .controls {
   display: flex;
   justify-content: center;
@@ -34,33 +28,6 @@ body {
   margin-bottom: 20px;
 }
 
-.search-bar {
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: 2px solid #ddd;
-  width: 250px;
-  font-size: 1rem;
-  outline: none;
-}
-
-.search-bar:focus {
-  border-color: #007bff;
-}
-
-.pokemon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-}
-
-.pokemon-card {
-  background: white;
-  border-radius: 15px;
-  text-align: center;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
 .filter-dropdown {
   padding: 10px 15px;
   border-radius: 8px;
@@ -73,29 +40,7 @@ body {
   transform: translateY(-5px);
 }
 
-.pokemon-image {
-  width: 100px;
-  height: 100px;
-}
 
-.pokemon-name {
-  text-transform: capitalize;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.pokemon-id {
-  font-size: 0.9rem;
-  color: #777;
-  margin-bottom: 10px;
-}
-
-.pokemon-types {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
-}
 
 .type-badge {
   padding: 5px 10px;
@@ -105,24 +50,6 @@ body {
   background-color: #eee;
 }
 
-.type-badge.fire { background-color: #ff5722; color: white; }
-.type-badge.water { background-color: #2196f3; color: white; }
-.type-badge.grass { background-color: #4caf50; color: white; }
-.type-badge.electric { background-color: #ffeb3b; color: black; }
-.type-badge.bug { background-color: #8bc34a; color: white; }
-.type-badge.poison { background-color: #9c27b0; color: white; }
-.type-badge.normal { background-color: #bdbdbd; color: black; }
-.type-badge.ground { background-color: #795548; color: white; }
-.type-badge.fairy { background-color: #f8bbd0; color: black; }
-.type-badge.psychic { background-color: #e91e63; color: white; }
-.type-badge.fighting { background-color: #d32f2f; color: white; }
-.type-badge.rock { background-color: #616161; color: white; }
-.type-badge.ghost { background-color: #7e57c2; color: white; }
-.type-badge.dragon { background-color: #3f51b5; color: white; }
-.type-badge.ice { background-color: #00acc1; color: white; }
-.type-badge.dark { background-color: #212121; color: white; }
-.type-badge.steel { background-color: #607d8b; color: white; }
-.type-badge.flying { background-color: #81d4fa; color: black; }
 
 .loading, .error, .no-results {
   text-align: center;

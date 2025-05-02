@@ -1,0 +1,81 @@
+.items-per-page{
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem;
+    margin-bottom: 22px;
+}
+.items-per-page select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .items-per-page select:hover {
+    background-color: #f0f0f0;
+  }
+  .getRandomPokemon{
+    display: inline-flex;
+    align-items: center;
+ 
+    border-radius: 10px;
+  }
+  .items-per-page label {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    color: #333;
+  }
+
+  .sorting-controls {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sorting-controls label {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    color: #333;
+  }
+  
+  .sorting-controls select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  
+  .sorting-controls select:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .favorites-button {
+    background-color: #2a75bb; /* Pokémon blue */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .favorites-button:hover {
+    background-color: #1b4f91;
+    transform: translateY(-2px);
+  }
+  
+  .favorites-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  

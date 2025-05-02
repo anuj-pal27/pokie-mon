@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import pLimit from "p-limit"; // install with: npm install p-limit
 
 const useFetchPokemon = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -10,8 +11,12 @@ const useFetchPokemon = () => {
     const fetchPokemons = async () => {
       try {
         const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=150");
-        const pokemonData = await Promise.all(
-          res.data.results.map(async (pokemon) => {
+        const results = res.data.results;
+
+        // Limit concurrency to 10 simultaneous requests
+        const limit = pLimit(10);
+        const fetchDetails = results.map((pokemon) =>
+          limit(async () => {
             const poke = await axios.get(pokemon.url);
             return {
               id: poke.data.id,
@@ -21,6 +26,8 @@ const useFetchPokemon = () => {
             };
           })
         );
+
+        const pokemonData = await Promise.all(fetchDetails);
         setPokemons(pokemonData);
       } catch (err) {
         setError("Failed to fetch Pokémon data.");

@@ -1,4 +1,5 @@
 import React from "react";
+import "../filter/SearchBar.css";
 
 function SearchBar({ searchTerm, setSearchTerm }) {
   return (

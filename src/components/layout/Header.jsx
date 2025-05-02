@@ -1,5 +1,5 @@
 import React from 'react'
-import "../App.css"; 
+import "./Header.css";
 import { FaDragon } from "react-icons/fa";
 function Header() {
   return (

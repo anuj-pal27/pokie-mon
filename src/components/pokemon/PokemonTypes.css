@@ -1,0 +1,26 @@
+
+.pokemon-types {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .type-badge.fire { background-color: #ff5722; color: white; }
+.type-badge.water { background-color: #2196f3; color: white; }
+.type-badge.grass { background-color: #4caf50; color: white; }
+.type-badge.electric { background-color: #ffeb3b; color: black; }
+.type-badge.bug { background-color: #8bc34a; color: white; }
+.type-badge.poison { background-color: #9c27b0; color: white; }
+.type-badge.normal { background-color: #bdbdbd; color: black; }
+.type-badge.ground { background-color: #795548; color: white; }
+.type-badge.fairy { background-color: #f8bbd0; color: black; }
+.type-badge.psychic { background-color: #e91e63; color: white; }
+.type-badge.fighting { background-color: #d32f2f; color: white; }
+.type-badge.rock { background-color: #616161; color: white; }
+.type-badge.ghost { background-color: #7e57c2; color: white; }
+.type-badge.dragon { background-color: #3f51b5; color: white; }
+.type-badge.ice { background-color: #00acc1; color: white; }
+.type-badge.dark { background-color: #212121; color: white; }
+.type-badge.steel { background-color: #607d8b; color: white; }
+.type-badge.flying { background-color: #81d4fa; color: black; }

@@ -1,15 +1,18 @@
 import PokemonCard from "./PokemonCard";
+import "./PokemonGrid.css"; 
 
-const PokemonList = ({ pokemons }) => {
+const PokemonGrid = ({ pokemons}) => {
   if (pokemons.length === 0) {
-    return <p>No Pokémon found!</p>;
+    return <div className="no-results">No Pokémon found!</div>;
   }
+
   return (
-    <div className="pokemon-list">
+    <div className="pokemon-grid">
       {pokemons.map((pokemon) => (
         <PokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
     </div>
   );
 };
-export default PokemonList;
+
+export default PokemonGrid;
